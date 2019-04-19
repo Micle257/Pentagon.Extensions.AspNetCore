@@ -11,7 +11,9 @@ namespace Pentagon.Extensions.AspNetCore
     public interface IMigrationApp
     {
         void OnStartup(string[] args);
+
         Task RunMigrationsAsync();
+
         Task EnsureSeedAsync();
     }
 }

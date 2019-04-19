@@ -18,7 +18,9 @@ namespace Pentagon.Extensions.AspNetCore
         public Task StartAsync(CancellationToken cancellationToken)
         {
             _cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+
             _executingTask = ExecuteAsync(_cts.Token);
+
             return _executingTask.IsCompleted ? _executingTask : Task.CompletedTask;
         }
 
@@ -26,8 +28,11 @@ namespace Pentagon.Extensions.AspNetCore
         {
             if (_executingTask == null)
                 return;
+
             _cts.Cancel();
+
             await Task.WhenAny(_executingTask, Task.Delay(-1, cancellationToken)).ConfigureAwait(false);
+
             cancellationToken.ThrowIfCancellationRequested();
         }
 
