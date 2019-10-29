@@ -18,10 +18,11 @@ namespace Pentagon.Extensions.AspNetCore.Localization
         /// <summary> Gets the accept languages from request header. </summary>
         /// <param name="request"> The request. </param>
         /// <returns> An iteration of <see cref="string" />. </returns>
-        /// <exception cref="System.ArgumentNullException"> request is null </exception>
+        /// <exception cref="System.ArgumentNullException"> request </exception>
         [Pure]
         [NotNull]
         [ItemNotNull]
+        [PublicAPI]
         public static IEnumerable<string> GetUserLanguages([NotNull] this HttpRequest request)
         {
             if (request == null)

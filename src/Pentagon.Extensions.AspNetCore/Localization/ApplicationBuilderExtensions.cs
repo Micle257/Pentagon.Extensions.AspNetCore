@@ -6,10 +6,19 @@
 
 namespace Pentagon.Extensions.AspNetCore.Localization
 {
+    using System;
+    using JetBrains.Annotations;
     using Microsoft.AspNetCore.Builder;
 
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseCultureContext(this IApplicationBuilder builder) => builder.UseMiddleware<CultureContextMiddleware>();
+        [NotNull]
+        public static IApplicationBuilder UseCultureContext([NotNull] this IApplicationBuilder builder)
+        {
+            if (builder == null)
+                throw new ArgumentNullException(nameof(builder));
+
+            return builder.UseMiddleware<CultureContextMiddleware>();
+        }
     }
 }

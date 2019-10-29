@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly name="Pentagon.Extensions.AspNetCore">
+  <member name="M:Pentagon.Extensions.AspNetCore.Localization.ApplicationBuilderExtensions.UseCultureContext(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <parameter name="builder">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Pentagon.Extensions.AspNetCore.Localization.CultureContextMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.Extensions.Logging.ILogger{Pentagon.Extensions.AspNetCore.Localization.CultureContextMiddleware},Pentagon.Extensions.Localization.Interfaces.ICultureContextWriter)">
+    <parameter name="context">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="logger">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="cultureContext">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Pentagon.Extensions.AspNetCore.Localization.HttpRequestExtensions.GetUserLanguages(Microsoft.AspNetCore.Http.HttpRequest)">
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <parameter name="request">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Pentagon.Extensions.AspNetCore.ServiceCollectionExtensions.AddDefaults(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+    <parameter name="services">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:Pentagon.Extensions.AspNetCore.ServiceCollectionExtensions.AddPage(Microsoft.Extensions.DependencyInjection.IMvcBuilder,Pentagon.Extensions.AspNetCore.PageConvention)">
+    <parameter name="services">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="convention">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+</assembly>

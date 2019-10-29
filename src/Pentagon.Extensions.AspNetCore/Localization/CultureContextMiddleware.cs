@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------
-//  <copyright file="UserSettingsCultureMiddleware.cs">
-//   Copyright (c) Smartdata s. r. o. All Rights Reserved.
+//  <copyright file="CultureManager.cs">
+//   Copyright (c) Michal Pokorný. All Rights Reserved.
 //  </copyright>
 // -----------------------------------------------------------------------
 
@@ -15,6 +15,7 @@ namespace Pentagon.Extensions.AspNetCore.Localization
     using Microsoft.Extensions.Logging;
     using Pentagon.Extensions.Localization.Interfaces;
 
+    /// <summary> Provides a ASP.NET Core middleware for population <see cref="ICultureContext" /> with current requested culture. </summary>
     public class CultureContextMiddleware
     {
         readonly RequestDelegate _next;
@@ -26,7 +27,7 @@ namespace Pentagon.Extensions.AspNetCore.Localization
 
         public async Task InvokeAsync([NotNull] HttpContext context,
                                       [NotNull] ILogger<CultureContextMiddleware> logger,
-                                      [NotNull] ICultureContext cultureContext)
+                                      [NotNull] ICultureContextWriter cultureContext)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
@@ -36,15 +37,15 @@ namespace Pentagon.Extensions.AspNetCore.Localization
 
             if (cultureContext == null)
                 throw new ArgumentNullException(nameof(cultureContext));
-            
+
             var requestCulture = context.Features.Get<IRequestCultureFeature>();
 
-            var ui = requestCulture?.RequestCulture?.UICulture?.Name ?? CultureInfo.CurrentUICulture.Name;
+            var ui     = requestCulture?.RequestCulture?.UICulture?.Name ?? CultureInfo.CurrentUICulture.Name;
             var format = requestCulture?.RequestCulture?.Culture?.Name ?? CultureInfo.CurrentCulture.Name;
 
-            cultureContext.SetLanguage(ui, format);
+            cultureContext.SetLanguage(uiCulture: ui, culture: format);
 
-            await _next(context);
+            await _next(context: context);
 
             logger.LogDebug($"Middleware ({nameof(CultureContextMiddleware)}) is processing response.");
         }
