@@ -1,0 +1,4 @@
+[submodule "lib/Pentagon.Extensions.Localization"]
+	path = lib/Pentagon.Extensions.Localization
+	url = git@github.com:Micle257/Pentagon.Extensions.Localization.git
+	branch = dev
