@@ -1,0 +1,28 @@
+﻿@using JetBrains.Annotations
+@using Microsoft.Extensions.Options
+@inherits LocalizationComponentBase<IFooterLocalization>
+@inject IOptions<FooterComponentOptions> Options
+<footer id="@CssId">
+    <div class="my-3 text-center text-white">
+    <p class="h6">@_options.CopyrigthText<a class="ml-2 text-primary" href="https://www.smartdata.cz" target="_blank">Smartdata s.r.o.</a></p>
+    </div>
+</footer>
+
+@code
+{
+
+    [Parameter]
+    public string CssId { get; set; } = "page-footer";
+
+    [NotNull]
+    FooterComponentOptions _options = new FooterComponentOptions();
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _options = Options.Value ?? new FooterComponentOptions();
+    }
+
+}

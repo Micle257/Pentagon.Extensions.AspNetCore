@@ -1,0 +1,9 @@
+﻿$footer-background-color: darken($accent, 10%) !default
+$footer-id: "page-footer" !default;
+
+footer#{$footer-id} {
+    background-color: $footer-background-color;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
