@@ -9,6 +9,8 @@ namespace Pentagon.Extensions.AspNetCore.Localization
     using System;
     using JetBrains.Annotations;
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.Extensions.DependencyInjection;
+    using Pentagon.Extensions.Localization.Interfaces;
 
     public static class ApplicationBuilderExtensions
     {
@@ -19,6 +21,19 @@ namespace Pentagon.Extensions.AspNetCore.Localization
                 throw new ArgumentNullException(nameof(builder));
 
             return builder.UseMiddleware<CultureContextMiddleware>();
+        }
+
+        [NotNull]
+        public static IApplicationBuilder UseLocalizationPreCache([NotNull] this IApplicationBuilder builder)
+        {
+            return builder.Use(async (context, next) =>
+                               {
+                                   var localizationCache = context.RequestServices.GetRequiredService<ILocalizationCache>();
+
+                                   await localizationCache.GetAllAsync().ConfigureAwait(false);
+
+                                   await next().ConfigureAwait(false);
+                               });
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Michal Pokorný</Authors>
     <Product>Pentagon.Extensions.AspNetCore</Product>
     <Description>Class library for .NET. Provides extension logic for ASP.NET Core.</Description>
@@ -50,7 +50,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Pentagon.Extensions.Localization" Version="2.1.0" />
+        <PackageReference Include="Pentagon.Extensions.Localization" Version="2.4.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
